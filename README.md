@@ -30,25 +30,25 @@ Please make sure you've already installed ganache-cli, Truffle and enabled MetaM
 
 ## Installing
 Clone this repository:\
-`git clone https://github.com/Brijesh5798/Supply_chain_project.git`\
+`git clone https://github.com/Brijesh5798/Supply_chain_project.git`
 
 
-Change directory to project-6 folder and install all requisite npm packages\ 
+Change directory to project-6 folder and install all requisite npm packages\
 `cd project-6`\
-`npm install`\
+`npm install`
 
 
 Launch Ganache:\
-`ganache-cli -m "spirit supply whale amount human item harsh scare congress discover talent hamster"`\
+`ganache-cli -m "spirit supply whale amount human item harsh scare congress discover talent hamster"`
 
 
 In a separate terminal window, Compile smart contracts:\
-`truffle compile`\
+`truffle compile`
 
 
 Test smart contracts:\
-`truffle test`\
+`truffle test`
 
 
 In a separate terminal window, launch the DApp:\
-`npm run dev`\
+`npm run dev`
