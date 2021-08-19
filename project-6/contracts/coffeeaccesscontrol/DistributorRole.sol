@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.7;
 
 // Import the library 'Roles'
 import "./Roles.sol";
@@ -6,12 +6,14 @@ import "./Roles.sol";
 // Define a contract 'DistributorRole' to manage this role - add, remove, check
 contract DistributorRole {
   using Roles for Roles.Role;
+
   // Define 2 events, one for Adding, and other for Removing
   event DistributorAdded(address indexed account);
-  event DistrubutorRemoved(address indexed account);
+  event DistributorRemoved(address indexed account);
 
   // Define a struct 'distributors' by inheriting from 'Roles' library, struct Role
   Roles.Role private distributors;
+
   // In the constructor make the address that deploys this contract the 1st distributor
   constructor() public {
     _addDistributor(msg.sender);
@@ -19,7 +21,7 @@ contract DistributorRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyDistributor() {
-    require(isDistributor(msg.sender),"You dont have distributors role");
+    require(isDistributor(msg.sender), "You do not have the distributor role.");
     _;
   }
 
@@ -47,6 +49,6 @@ contract DistributorRole {
   // Define an internal function '_removeDistributor' to remove this role, called by 'removeDistributor'
   function _removeDistributor(address account) internal {
     distributors.remove(account);
-    emit DistrubutorRemoved(account);
+    emit DistributorRemoved(account);
   }
 }

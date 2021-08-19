@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.7;
 
 /// Provides basic authorization control
 contract Ownable {
@@ -8,19 +8,19 @@ contract Ownable {
     event TransferOwnership(address indexed oldOwner, address indexed newOwner);
 
     /// Assign the contract to an owner
-    constructor () internal {
+    constructor () public {
         origOwner = msg.sender;
         emit TransferOwnership(address(0), origOwner);
     }
 
     /// Look up the address of the owner
-    function owner() public view returns (address) {
+    function _owner() public view returns (address) {
         return origOwner;
     }
 
     /// Define a function modifier 'onlyOwner'
     modifier onlyOwner() {
-        require(isOwner());
+        require(isOwner(), "Only the contract owner can call this function.");
         _;
     }
 
@@ -42,7 +42,7 @@ contract Ownable {
 
     /// Define an internal function to transfer ownership
     function _transferOwnership(address newOwner) internal {
-        require(newOwner != address(0));
+        require(newOwner != address(0), "The address provided is not valid.");
         emit TransferOwnership(origOwner, newOwner);
         origOwner = newOwner;
     }
